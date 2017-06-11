@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  lb:
+    image: dockercloud/haproxy
+    links:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 80:80
+  web:
+    image: dfk/cld:2.0
+    #build: .
+    #volumes:
+    #  - ./www:/www
+    
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPassword
+      MYSQL_DATABASE: dfk
+      MYSQL_USER: dfk
+      MYSQL_PASSWORD: userPassword
+
+volumes:
+  db_data:
