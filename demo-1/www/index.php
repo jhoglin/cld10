@@ -2,6 +2,7 @@
 <head>
 	<title>Hello world!</title>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<style>
 	body {
 		background-color: white;
@@ -13,48 +14,21 @@
 	#logo {
 		margin-bottom: 40px;
 	}
-	
 	.container {
-		width: 240px;
+		max-width: 550px;
+		font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
+	
 	</style>
 </head>
 <body>
-	<div class="conatiner">
-	<img id="logo" src="/logo.png" />
-	<h1><?php echo "Hello ".($_ENV["NAME"]?$_ENV["NAME"]:"world")."!"; ?> v.1.0</h1>
-	<?php if($_ENV["HOSTNAME"]) {?><h3>My hostname is <?php echo $_ENV["HOSTNAME"]; ?></h3><?php } ?>
-	<?php
-	$links = [];
-	foreach($_ENV as $key => $value) {
-		if(preg_match("/^(.*)_PORT_([0-9]*)_(TCP|UDP)$/", $key, $matches)) {
-			$links[] = [
-				"name" => $matches[1],
-				"port" => $matches[2],
-				"proto" => $matches[3],
-				"value" => $value
-			];
-		}
-	}
-	if($links) {
-	?>
-		<h3>Links found</h3>
-		<?php
-		foreach($links as $link) {
-			?>
-			<b><?php echo $link["name"]; ?></b> listening in <?php echo $link["port"]+"/"+$link["proto"]; ?> available at <?php echo $link["value"]; ?><br />
-			<?php
-		}
-		?>
-	<?php
-	}
+	<div class="container">
 
-	if($_ENV["DOCKERCLOUD_AUTH"]) {
-		?>
-		<h3>I have Docker Cloud API powers!</h3>
-		<?php
-	}
-	?>
+		<img id="logo" src="/logo.png" />
+		<h1>Hello world! v.1.0</h1>
+
+
+		<?php if($_ENV["HOSTNAME"]) {?><h3>My hostname is <?php echo $_ENV["HOSTNAME"]; ?></h3><?php } ?>
 	</div>
 </body>
 </html>
