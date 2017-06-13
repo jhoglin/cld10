@@ -10,14 +10,15 @@ services:
     ports:
       - 80:80
   web:
-    image: jhoglin/cld:4.0
+    image: dfk/cld:3.0
     ##
-    # We can if we like let docker-compose build this image
+    # We can if we like let docker-compose buiöd this image if it sees changes to the Dockerfile
     #
-    build: .
+    #build: .
+
     ##
     # For local development its easy to replace the contants inside the container to something on
     # this local machine instead.
     #
-    volumes:
-      - ./www:/var/www/html
+    #volumes:
+    #  - ./www:/www

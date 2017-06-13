@@ -4,7 +4,7 @@ CLD - DEMO TWO
 Vi vill ha lite mer content och lägger till en paragraf i index.php
 
 ```
-docker build -t dfk/cld:2.0 .
+docker build -t jhoglin/cld:2.0 .
 
 Sending build context to Docker daemon  72.7 kB
 Step 1/7 : FROM alpine:3.4
@@ -38,12 +38,29 @@ Notera `Step 2/7 : RUN apk --update add nginx php5-fpm &&     mkdir -p /run/ngin
 
 Om vi jämför tiderna så blir vinsten med en cache tydlig.
 ```
-time docker build --no-cache=true -t dfk/cld:2.0 .
+time docker build --no-cache=true -t jhoglin/cld:2.0 .
 real    0m17.997s
 
-time docker build -t dfk/cld:2.0 .
+time docker build -t jhoglin/cld:2.0 .
 real    0m4.320s
 ```
 ```
-docker run --detach --rm --name dfk -p "80:80" dfk/cld:2.0
+docker run --detach --rm --name cld -p "80:80" jhoglin/cld:2.0
+```
+
+
+
+Google
+```
+gcloud config set project dfk-cld10
+gcloud config set compute/zone us-central1-b
+
+
+gcloud container clusters create dfk-cluster --num-nodes=3
+gcloud compute instances list
+
+docker build -t gcr.io/dfk-cld10/cld:2.0 .
+gcloud docker -- push gcr.io/dfk-cld10/cld:2.0
+
+kubectl run hello-world --image=gcr.io/dfk-cld10/cld:2.0 --port 80
 ```

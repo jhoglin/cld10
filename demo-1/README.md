@@ -2,9 +2,9 @@ CLD - DEMO ONE
 ===========
 
 ```
-docker build -t dfk/cld:1.0 .
+docker build -t jhoglin/cld:1.0 .
 ```
 
 ```
-docker run --rm -it -p "80:80" dfk/cld:1.0
+docker run --detach --rm --name cld -p "80:80" jhoglin/cld:1.0
 ```
