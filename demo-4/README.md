@@ -7,7 +7,7 @@ CLD - DEMO TWO
 docker build -t dfk/cld:4.0 .
 ```
 ```
-docker run --detach --rm --name dfk -p "80:80" dfk/cld:4.0
+docker run --detach --rm --name cld -p "80:80" dfk/cld:4.0
 ```
 
 
