@@ -1,3 +1,12 @@
+# Cleanup and prepare
+```
+docker system prune -a
+
+docker pull alpine:3.4
+docker pull php:5-apache
+docker pull php:7-apache
+```
+
 ## Demo 1
 Skapa en simpel webbsida baserad på php
 

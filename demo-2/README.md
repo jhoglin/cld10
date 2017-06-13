@@ -4,7 +4,7 @@ CLD - DEMO TWO
 Vi vill ha lite mer content och lägger till en paragraf i index.php
 
 ```
-docker build -t jhoglin/cld:2.0 .
+time docker build -t jhoglin/cld:2.0 .
 
 Sending build context to Docker daemon  72.7 kB
 Step 1/7 : FROM alpine:3.4
